@@ -1,0 +1,32 @@
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
+
+public class DrawPanel extends JPanel {
+    
+    public DrawPanel() {
+	int hour = 0;
+	int second = 0;
+    }
+
+    public void paintComponent(Graphics graphics){
+	super.paintComponent(graphics);
+	graphics.setColor(Color.BLACK);
+	graphics.fillOval(245, 235, 25, 25);
+	graphics.drawOval(15, 5, 480, 480);
+    }
+
+    public static List getCoordinates(double angle){
+	angle = Math.toRadians(angle);
+	double z = 450 * Math.sin(angle);
+	double x = z * Math.sin(Math.toRadians(90) - angle);
+	double y = Math.sqrt((Math.pow(z, 2)) - (Math.pow(x, 2)));
+	List   coordinates = new ArrayList();
+	coordinates.add(x);
+	coordinates.add(y);
+	return coordinates;
+    }
+}
+	
+	

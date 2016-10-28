@@ -1,0 +1,32 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DrawFrame extends JFrame {
+    
+    public DrawFrame() {
+	super("Analog Clock");
+	setLayout(null);
+	List coordinates;
+	for(int i = 1; i <= 12; i++){
+	    JLabel timeNumber = new JLabel("");
+	    double angle = i * 15;
+	    timeNumber.setText(String.valueOf(i));
+	    add(timeNumber);
+	    coordinates = DrawPanelHands.getCoordinates(angle);
+	    int x = ((Double)(coordinates.get(0))).intValue();
+	    int y = ((Double)(coordinates.get(1))).intValue();
+	    timeNumber.setBounds(x + 250, y + 10, 20, 20);
+	    add(timeNumber);
+	}
+	DrawPanelSetup panelSetup = new DrawPanelSetup();
+        panelSetup.setBounds(0, 0, 500, 500);
+	add(panelSetup);
+	DrawPanelHands panelHands = new DrawPanelHands();
+	panelHands.setBounds(0, 0, 500, 500);
+	add(panelHands);
+    }
+}
+	
+			    
